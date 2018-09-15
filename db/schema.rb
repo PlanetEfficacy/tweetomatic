@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180915193350) do
+ActiveRecord::Schema.define(version: 20180915194930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auto_replies", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "text"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_auto_replies_on_user_id"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.bigint "tweet_id"
@@ -21,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180915193350) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tweets_on_user_id"
   end
 
 end
