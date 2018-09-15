@@ -12,4 +12,13 @@ RSpec.describe AutoReply, type: :model do
       expect(build :auto_reply).to be_valid
     end
   end
+
+  describe '.active' do
+    it 'returns active auto replies' do
+      auto_reply = create :auto_reply
+      create :auto_reply, user_id: '12345', active: false
+
+      expect(described_class.active).to eq described_class.where(active: true)
+    end
+  end
 end

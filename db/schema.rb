@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180915194930) do
   create_table "auto_replies", force: :cascade do |t|
     t.bigint "user_id"
     t.string "text"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_auto_replies_on_user_id"

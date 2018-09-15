@@ -3,7 +3,7 @@ class CreateAutoReplies < ActiveRecord::Migration[5.1]
     create_table :auto_replies do |t|
       t.bigint :user_id
       t.string :text
-      t.boolean :active
+      t.boolean :active, default: true
 
       t.timestamps
     end
