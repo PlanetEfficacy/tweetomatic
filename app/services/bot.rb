@@ -11,9 +11,9 @@ class Bot < Chatterbot::Bot
 
   def find_tweets
     search "from:#{screen_name}" do |tweet|
-      # if Tweet.unknown_tweet(tweet)? && !tweet.reply?
-      #   tweets << tweet
-      # end
+      if Tweet.unknown_tweet(tweet)? && !tweet.reply?
+        tweets << tweet
+      end
     end
   end
 
@@ -21,7 +21,7 @@ class Bot < Chatterbot::Bot
     tweets.each do |tweet|
       if Tweet.create_from_tweet(tweet)
         Rails.logger.info "Replying to #{Tweet.display_id_and_text(tweet)} with status: #{status}"
-        reply status, tweet
+        reply_tweet = reply(status, tweet)
       else
         Rails.logger.warn "Could not save tweet_id: #{Tweet.display_id_and_text(tweet)}"
       end
@@ -34,5 +34,9 @@ class Bot < Chatterbot::Bot
 
   def status
     "@#{screen_name} - #{text}"
+  end
+
+  def notify(reply_tweet, tweet)
+    direct_message "Master, your will be done - #{Tweet.display_id_and_text(tweet)}", reply_tweet.user
   end
 end
