@@ -1,24 +1,8 @@
-# README
+# Tweetomatic
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tweetomatic is a weekend project I created to automate some of my repetitive Twitter use. Specifically, Tweetomatic allows me to automatically reply when a specific Twitter user publishes a new tweet.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Use cases
+- Advocacy
+- Promotion
+- Humor
