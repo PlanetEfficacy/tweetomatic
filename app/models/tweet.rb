@@ -8,6 +8,7 @@ class Tweet < ApplicationRecord
   end
 
   def self.create_from_tweet(tweet)
+    puts "creating tweet from #{Tweet.display_id_and_text(tweet)}"
     self.create(
       tweet_id: tweet.id,
       user_id: tweet.user.id,
