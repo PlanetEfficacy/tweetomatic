@@ -12,7 +12,7 @@ class Bot < Chatterbot::Bot
   def find_tweets
     puts "finding tweets from #{screen_name}."
     search "from:#{screen_name}" do |tweet|
-      if Tweet.unknown_tweet?(tweet) && !tweet.reply?
+      if Tweet.unknown_tweet?(tweet) && !tweet.reply? && !tweet.retweet?
         puts "New, non reply tweet:#{tweet.id} - #{tweet.text}"
         tweets << tweet
       end
